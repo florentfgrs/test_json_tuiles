@@ -1,0 +1,86 @@
+{
+  "version": 8,
+  "name": "Empty Style",
+  "metadata": {"maputnik:renderer": "mbgljs"},
+  "sources": {
+    "openmaptiles": {
+      "type": "vector",
+      "url": "https://api.maptiler.com/tiles/v3/tiles.json?key={key}"
+    },
+    "a8ek69v95": {
+      "type": "vector",
+      "url": "https://localhost:3000/tilejson.json"
+    },
+    "ordi": {"type": "geojson", "data": {}},
+    "apc9prfrb": {"type": "geojson", "data": {}},
+    "capitale": {
+      "type": "geojson",
+      "data": "https://gist.githubusercontent.com/tsamaya/82e965a6c660f921e620/raw/2bb6f8cb248f2d7cd5b3d68e1c2617d464036925/world_capitals.geojson"
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "fond",
+      "type": "background",
+      "paint": {"background-color": "rgba(230, 230, 206, 1)"}
+    },
+    {
+      "id": "eau",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-antialias": false,
+        "fill-outline-color": "rgba(0, 66, 170, 1)",
+        "fill-color": "rgba(171, 183, 191, 1)"
+      }
+    },
+    {
+      "id": "frontiere",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "boundary",
+      "filter": ["all", ["==", "admin_level", 2], ["==", "maritime", 0]],
+      "paint": {"line-color": "rgba(80, 80, 80, 1)"}
+    },
+    {
+      "id": "pays",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "filter": ["all", ["==", "class", "country"]],
+      "layout": {
+        "text-field": "{name:fr}",
+        "text-font": ["Noto Sans Regular"],
+        "text-size": 12,
+        "text-max-width": 5,
+        "text-transform": "uppercase"
+      },
+      "paint": {
+        "text-color": "rgba(57, 57, 57, 1)",
+        "icon-halo-width": 10,
+        "icon-halo-blur": 10,
+        "icon-halo-color": "rgba(218, 21, 21, 1)",
+        "text-halo-color": "rgba(253, 253, 253, 1)",
+        "text-halo-width": 1,
+        "text-halo-blur": 10
+      }
+    },
+    {
+      "id": "capitale",
+      "type": "symbol",
+      "source": "capitale",
+      "layout": {
+        "text-field": "{name}",
+        "text-font": ["Noto Sans Regular"],
+        "text-max-width": 10,
+        "text-size": 14
+      },
+      "paint": {"text-translate": [0, 10]}
+    }
+  ],
+  "id": "ksaiwfkay"
+}
