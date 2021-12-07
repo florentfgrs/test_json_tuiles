@@ -82,22 +82,56 @@
       "paint": {"text-translate": [0, 10]}
     },
     {
-      "id": "autoroute",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "filter": ["any", ["==", "class", "trunk"], ["==", "class", "motorway"]],
-      "layout": {"visibility": "visible"},
-      "paint": {"line-color": "rgba(255, 0, 4, 1)", "line-width": 3}
-    },
-    {
       "id": "autoroute2",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
       "filter": ["any", ["==", "class", "trunk"], ["==", "class", "motorway"]],
       "layout": {"visibility": "visible"},
-      "paint": {"line-color": "rgba(255, 201, 0, 1)"}
+      "paint": {
+        "line-color": "rgba(255, 201, 0, 1)",
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          5,
+          5,
+          9,
+          7,
+          10,
+          7,
+          12,
+          7,
+          15,
+          18
+        ]
+      }
+    },
+    {
+      "id": "autoroute",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "filter": ["any", ["==", "class", "trunk"], ["==", "class", "motorway"]],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "line-color": "rgba(255, 0, 4, 1)",
+        "line-width": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          5,
+          2,
+          9,
+          3,
+          10,
+          4,
+          12,
+          4,
+          15,
+          10
+        ]
+      }
     },
     {
       "id": "tertiary",
